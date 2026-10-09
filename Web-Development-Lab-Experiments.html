@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Lab | Experiments 1-6</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 12mm;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            color: #26332f;
+            font-family: Arial, sans-serif;
+            font-size: 9.5pt;
+            line-height: 1.4;
+        }
+
+        .experiment {
+            min-height: 270mm;
+            page-break-after: always;
+            break-after: page;
+        }
+
+        .experiment:last-child {
+            page-break-after: auto;
+            break-after: auto;
+        }
+
+        .institution {
+            padding: 0 0 7px;
+            border-bottom: 2px solid #285f52;
+            color: #285f52;
+            font-size: 10pt;
+            font-weight: bold;
+            letter-spacing: 0.08em;
+            text-align: center;
+        }
+
+        .department {
+            margin: 3px 0 12px;
+            color: #586761;
+            font-size: 8pt;
+            text-align: center;
+        }
+
+        .exp-number {
+            margin: 0 0 2px;
+            color: #347966;
+            font-size: 9pt;
+            font-weight: bold;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0 0 5px;
+            color: #183d36;
+            font-size: 22pt;
+        }
+
+        .description {
+            margin: 0 0 10px;
+            color: #586761;
+            font-size: 10pt;
+        }
+
+        .page-link {
+            margin-bottom: 10px;
+            overflow-wrap: anywhere;
+            font-size: 8pt;
+        }
+
+        a {
+            color: #225c9a;
+            text-decoration: none;
+        }
+
+        .screenshot {
+            display: block;
+            width: 100%;
+            height: 89mm;
+            margin: 0 auto 10px;
+            border: 1px solid #dce5e0;
+            background: #f3f5f4;
+            object-fit: contain;
+        }
+
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .panel {
+            margin-bottom: 8px;
+            padding: 9px 11px;
+            border: 1px solid #dce5e0;
+            border-radius: 6px;
+            break-inside: avoid;
+        }
+
+        h2 {
+            margin: 0 0 5px;
+            color: #285f52;
+            font-size: 10pt;
+        }
+
+        p {
+            margin: 0 0 5px;
+        }
+
+        ul,
+        ol {
+            margin: 3px 0 0;
+            padding-left: 17px;
+        }
+
+        li {
+            margin-bottom: 2px;
+        }
+
+        pre {
+            margin: 5px 0 0;
+            padding: 7px;
+            overflow-wrap: anywhere;
+            white-space: pre-wrap;
+            border-radius: 4px;
+            background: #f2f5f4;
+            color: #253a34;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 7.4pt;
+            line-height: 1.3;
+        }
+
+        .wide {
+            grid-column: 1 / -1;
+        }
+
+        .note {
+            padding: 7px 9px;
+            border-left: 3px solid #c48a2c;
+            background: #fff8e9;
+        }
+
+        .footer {
+            margin-top: 4px;
+            color: #69756f;
+            font-size: 7.5pt;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <article class="experiment">
+            <header class="institution">JSS UNIVERSITY, NOIDA</header>
+            <p class="department">Department of Data Science | Web Development Lab</p>
+            <p class="exp-number">Experiment 01 of 06</p>
+            <h1>Personal Profile &amp; GitHub Pages</h1>
+            <p class="description">Profile page with notes for repository setup, branching, merging, and static-site hosting.</p>
+            <p class="page-link"><strong>Published page:</strong> <a href="https://somyasharma72.github.io/college_experiments/experiment1/index.html">somyasharma72.github.io/college_experiments/experiment1/</a></p>
+            <img class="screenshot" src="lab-report-screenshots/experiment-1.jpg" alt="Full-page screenshot of the deployed Experiment 1 personal profile">
+            <div class="columns">
+                <section class="panel">
+                    <h2>Objective and page contents</h2>
+                    <p>Present the student's profile, skills, projects, and contact details. The experiment also explains how GitHub stores the project and how GitHub Pages can publish it.</p>
+                    <p><strong>Resources:</strong> HTML, CSS, VS Code, Git, GitHub, a web browser, and GitHub Pages.</p>
+                </section>
+                <section class="panel">
+                    <h2>Project structure</h2>
+                    <pre>experiment1/
+└── index.html</pre>
+                    <p><strong>Capture:</strong> deployed page returned HTTP 200 on 9 Oct 2026.</p>
+                </section>
+                <section class="panel wide">
+                    <h2>Git tasks to perform manually</h2>
+                    <ol>
+                        <li>Create a GitHub repository, connect this folder, commit the files, and push the default branch.</li>
+                        <li>Create and push a feature branch; make and commit a change.</li>
+                        <li>Open a pull request, review it, and merge it into the default branch.</li>
+                        <li>Configure Settings &gt; Pages to publish the default branch's root folder; wait for the build and check its URL.</li>
+                    </ol>
+                    <p class="note"><strong>Not claimed as completed:</strong> repository creation, branch work, merge, and deployment actions must be performed and verified by the student.</p>
+                </section>
+            </div>
+            <p class="footer">Screenshot reflects the published page at the time of capture. Local source may differ until pushed and deployed.</p>
+        </article>
+
+        <article class="experiment">
+            <header class="institution">JSS UNIVERSITY, NOIDA</header>
+            <p class="department">Department of Data Science | Web Development Lab</p>
+            <p class="exp-number">Experiment 02 of 06</p>
+            <h1>Personal Portfolio</h1>
+            <p class="description">A responsive student portfolio with section navigation, About, Projects, and Contact.</p>
+            <p class="page-link"><strong>Published page:</strong> <a href="https://somyasharma72.github.io/college_experiments/portfolio/index.html">somyasharma72.github.io/college_experiments/portfolio/</a></p>
+            <img class="screenshot" src="lab-report-screenshots/experiment-2.jpg" alt="Full-page screenshot of the deployed Experiment 2 portfolio">
+            <div class="columns">
+                <section class="panel">
+                    <h2>Objective and page contents</h2>
+                    <p>Introduce the student, show a small skills list and project list, and provide navigation links to the page sections.</p>
+                    <p><strong>Resources:</strong> HTML5 and a linked CSS stylesheet.</p>
+                </section>
+                <section class="panel">
+                    <h2>Project structure</h2>
+                    <pre>portfolio/
+├── index.html
+└── style.css</pre>
+                    <p><strong>Capture:</strong> deployed page returned HTTP 200 on 9 Oct 2026.</p>
+                </section>
+                <section class="panel wide">
+                    <h2>Implementation excerpt</h2>
+                    <pre>&lt;nav aria-label="Main navigation"&gt;
+  &lt;a href="#about"&gt;About&lt;/a&gt;
+  &lt;a href="#projects"&gt;Projects&lt;/a&gt;
+  &lt;a href="#contact"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
+&lt;main&gt;
+  &lt;section id="about"&gt;...&lt;/section&gt;
+  &lt;section id="projects"&gt;...&lt;/section&gt;
+  &lt;section id="contact"&gt;...&lt;/section&gt;
+&lt;/main&gt;</pre>
+                    <p>The navigation targets the matching section IDs. The stylesheet provides a centered layout and a small-screen spacing adjustment.</p>
+                </section>
+            </div>
+            <p class="footer">Screenshot reflects the published page at the time of capture. Local source may differ until pushed and deployed.</p>
+        </article>
+
+        <article class="experiment">
+            <header class="institution">JSS UNIVERSITY, NOIDA</header>
+            <p class="department">Department of Data Science | Web Development Lab</p>
+            <p class="exp-number">Experiment 03 of 06</p>
+            <h1>To-Do List</h1>
+            <p class="description">A small browser-based task list for adding, completing, and deleting tasks.</p>
+            <p class="page-link"><strong>Published page:</strong> <a href="https://somyasharma72.github.io/college_experiments/to-do%20list/index.html">somyasharma72.github.io/college_experiments/to-do%20list/</a></p>
+            <img class="screenshot" src="lab-report-screenshots/experiment-3.jpg" alt="Full-page screenshot of the deployed Experiment 3 to-do list">
+            <div class="columns">
+                <section class="panel">
+                    <h2>Objective and page contents</h2>
+                    <p>Accept a task, append it to a list, toggle its completed state, and remove it when no longer needed. Empty task text is ignored.</p>
+                    <p><strong>Resources:</strong> HTML, CSS, and browser JavaScript.</p>
+                </section>
+                <section class="panel">
+                    <h2>Project structure</h2>
+                    <pre>to-do list/
+└── index.html
+(styles and script are inline)</pre>
+                    <p><strong>Capture:</strong> deployed page returned HTTP 200 on 9 Oct 2026.</p>
+                </section>
+                <section class="panel wide">
+                    <h2>Implementation excerpt</h2>
+                    <pre>taskForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const task = taskInput.value.trim();
+  if (!task) return;
+  // Create task text, Complete/Undo and Delete buttons.
+  taskList.appendChild(item);
+});</pre>
+                    <p>Task text is inserted with <code>textContent</code>; the action buttons work with keyboard and mouse.</p>
+                </section>
+            </div>
+            <p class="footer">Screenshot reflects the published page at the time of capture. Local source may differ until pushed and deployed.</p>
+        </article>
+
+        <article class="experiment">
+            <header class="institution">JSS UNIVERSITY, NOIDA</header>
+            <p class="department">Department of Data Science | Web Development Lab</p>
+            <p class="exp-number">Experiment 04 of 06</p>
+            <h1>SEO &amp; Accessibility</h1>
+            <p class="description">Portfolio page improvements for search metadata, semantic structure, keyboard access, and mobile layouts.</p>
+            <p class="page-link"><strong>Published page:</strong> <a href="https://somyasharma72.github.io/college_experiments/seo%20experiment/index.html">somyasharma72.github.io/college_experiments/seo%20experiment/</a></p>
+            <img class="screenshot" src="lab-report-screenshots/experiment-4.jpg" alt="Full-page screenshot of the deployed Experiment 4 SEO portfolio">
+            <div class="columns">
+                <section class="panel">
+                    <h2>Checks and improvements</h2>
+                    <ul>
+                        <li>English document language, descriptive title and meta description.</li>
+                        <li>Header, labeled navigation, main content, sections, and footer.</li>
+                        <li>Heading order, valid section links, and visible keyboard focus.</li>
+                        <li>Responsive CSS and reduced-motion preference support.</li>
+                        <li>No images or form inputs are used on this page.</li>
+                    </ul>
+                </section>
+                <section class="panel">
+                    <h2>Project structure</h2>
+                    <pre>seo experiment/
+├── index.html
+└── style.css</pre>
+                    <p><strong>Resources:</strong> HTML5 and CSS3. Deployed page returned HTTP 200 on 9 Oct 2026.</p>
+                </section>
+                <section class="panel wide">
+                    <h2>Implementation excerpt</h2>
+                    <pre>&lt;meta name="description"
+  content="Somya Sharma is a B.Tech Computer Science student..."&gt;
+&lt;header&gt;...&lt;nav aria-label="Main navigation"&gt;...&lt;/nav&gt;&lt;/header&gt;
+&lt;main id="top"&gt;
+  &lt;section id="about"&gt;...&lt;/section&gt;
+&lt;/main&gt;</pre>
+                    <p>The canonical URL was intentionally removed because the original pointed to <code>example.com</code>.</p>
+                </section>
+            </div>
+            <p class="footer">Screenshot reflects the published page at the time of capture. Local source may differ until pushed and deployed.</p>
+        </article>
+
+        <article class="experiment">
+            <header class="institution">JSS UNIVERSITY, NOIDA</header>
+            <p class="department">Department of Data Science | Web Development Lab</p>
+            <p class="exp-number">Experiment 05 of 06</p>
+            <h1>Weather Application</h1>
+            <p class="description">City search uses Open-Meteo geocoding followed by its forecast API to show current conditions.</p>
+            <p class="page-link"><strong>Published page:</strong> <a href="https://somyasharma72.github.io/college_experiments/weather/index.html">somyasharma72.github.io/college_experiments/weather/</a></p>
+            <img class="screenshot" src="lab-report-screenshots/experiment-5.jpg" alt="Full-page screenshot of the deployed Experiment 5 weather app">
+            <div class="columns">
+                <section class="panel">
+                    <h2>Objective and behavior</h2>
+                    <p>Search by city name, show a loading message, handle unknown cities and API/network errors, and display temperature, humidity, and wind speed when data is returned.</p>
+                    <p><strong>Resources:</strong> HTML, CSS, JavaScript Fetch API, and Open-Meteo public endpoints.</p>
+                </section>
+                <section class="panel">
+                    <h2>Project structure</h2>
+                    <pre>weather/
+└── index.html
+(styles and script are inline)</pre>
+                    <p><strong>Capture:</strong> deployed page returned HTTP 200 on 9 Oct 2026.</p>
+                </section>
+                <section class="panel wide">
+                    <h2>Implementation excerpt</h2>
+                    <pre>const geoResponse = await fetch(geocodingUrl);
+if (!geoResponse.ok) throw new Error("City search failed");
+const place = geoData.results[0];
+const weatherResponse = await fetch(forecastUrl);
+if (!weatherResponse.ok) throw new Error("Weather request failed");</pre>
+                    <p>City names are URL-encoded. Results are inserted as text, and a live status region announces loading and errors.</p>
+                </section>
+            </div>
+            <p class="footer">Screenshot reflects the published page at the time of capture. Local source may differ until pushed and deployed.</p>
+        </article>
+
+        <article class="experiment">
+            <header class="institution">JSS UNIVERSITY, NOIDA</header>
+            <p class="department">Department of Data Science | Web Development Lab</p>
+            <p class="exp-number">Experiment 06 of 06</p>
+            <h1>Bootstrap Blog</h1>
+            <p class="description">Responsive blog layout using Bootstrap's grid and navbar with post cards, a sidebar, and a footer.</p>
+            <p class="page-link"><strong>Published page:</strong> <a href="https://somyasharma72.github.io/college_experiments/bootstrap_exp6/index.html">somyasharma72.github.io/college_experiments/bootstrap_exp6/</a></p>
+            <img class="screenshot" src="lab-report-screenshots/experiment-6.jpg" alt="Full-page screenshot of the deployed Experiment 6 Bootstrap blog">
+            <div class="columns">
+                <section class="panel">
+                    <h2>Objective and page contents</h2>
+                    <p>Present two blog posts in the main column, an About and Categories sidebar, and a footer. The navigation collapses behind a toggle on smaller screens.</p>
+                    <p><strong>Resources:</strong> HTML5, Bootstrap 5.3.3 CSS and bundle, and a small custom stylesheet.</p>
+                </section>
+                <section class="panel">
+                    <h2>Project structure</h2>
+                    <pre>bootstrap_exp6/
+└── index.html
+(Bootstrap loaded from jsDelivr)</pre>
+                    <p><strong>Capture:</strong> deployed page returned HTTP 200 on 9 Oct 2026.</p>
+                </section>
+                <section class="panel wide">
+                    <h2>Implementation excerpt</h2>
+                    <pre>&lt;nav class="navbar navbar-expand-lg navbar-dark"&gt;
+  &lt;button class="navbar-toggler"
+    data-bs-toggle="collapse"
+    data-bs-target="#blogNavigation"&gt;...&lt;/button&gt;
+  ...
+&lt;/nav&gt;
+&lt;main class="container"&gt;
+  &lt;div class="row"&gt;...&lt;/div&gt;
+&lt;/main&gt;</pre>
+                    <p>Bootstrap's responsive grid stacks the post column and sidebar on narrow screens.</p>
+                </section>
+            </div>
+            <p class="footer">Screenshot reflects the published page at the time of capture. Local source may differ until pushed and deployed.</p>
+        </article>
+    </main>
+</body>
+</html>
