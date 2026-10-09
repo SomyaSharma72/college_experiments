@@ -1,90 +1,133 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial;
+            font-family: Arial, sans-serif;
             text-align: center;
             background: #f2f2f2;
+            margin: 0;
+            padding: 20px;
         }
 
         .container {
             background: white;
-            width: 350px;
+            width: min(100%, 450px);
             margin: 50px auto;
             padding: 20px;
             border-radius: 10px;
         }
 
+        form {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        input,
+        button {
+            min-height: 42px;
+            padding: 8px 12px;
+            font: inherit;
+        }
+
         input {
-            padding: 10px;
-            width: 65%;
+            flex: 1;
+            min-width: 0;
         }
 
         button {
-            padding: 10px;
             cursor: pointer;
         }
 
         li {
-            margin: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 10px 0;
             text-align: left;
+            overflow-wrap: anywhere;
         }
 
-        .completed {
+        .task-text {
+            flex: 1;
+        }
+
+        .task-text.completed {
             text-decoration: line-through;
             color: gray;
+        }
+
+        @media (max-width: 420px) {
+            form {
+                align-items: stretch;
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h2>My To-Do List</h2>
-
-        <input type="text" id="taskInput"
-               placeholder="Enter a task">
-        <button onclick="addTask()">Add</button>
-
-        <ul id="taskList"></ul>
-    </div>
+    <main class="container">
+        <h1>My To-Do List</h1>
+        <form id="taskForm">
+            <label for="taskInput">New task</label>
+            <input type="text" id="taskInput" placeholder="Enter a task">
+            <button type="submit">Add</button>
+        </form>
+        <ul id="taskList" aria-label="Tasks"></ul>
+    </main>
 
     <script>
-        function addTask() {
-            let input = document.getElementById("taskInput");
-            let task = input.value.trim();
+        const taskForm = document.getElementById("taskForm");
+        const taskInput = document.getElementById("taskInput");
+        const taskList = document.getElementById("taskList");
 
-            if (task === "") {
-                alert("Please enter a task");
+        taskForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const task = taskInput.value.trim();
+
+            if (!task) {
+                taskInput.focus();
                 return;
             }
 
-            let li = document.createElement("li");
-            let text = document.createElement("span");
+            const item = document.createElement("li");
+            const text = document.createElement("span");
+            text.className = "task-text";
             text.textContent = task;
 
-            // Mark task as completed
-            text.onclick = function() {
-                text.classList.toggle("completed");
-            };
+            const completeButton = document.createElement("button");
+            completeButton.type = "button";
+            completeButton.textContent = "Complete";
+            completeButton.setAttribute("aria-pressed", "false");
+            completeButton.addEventListener("click", function () {
+                const completed = text.classList.toggle("completed");
+                completeButton.setAttribute("aria-pressed", String(completed));
+                completeButton.textContent = completed ? "Undo" : "Complete";
+            });
 
-            // Delete button
-            let del = document.createElement("button");
-            del.textContent = "Delete";
-            del.onclick = function() {
-                li.remove();
-            };
+            const deleteButton = document.createElement("button");
+            deleteButton.type = "button";
+            deleteButton.textContent = "Delete";
+            deleteButton.addEventListener("click", function () {
+                item.remove();
+            });
 
-            li.appendChild(text);
-            li.appendChild(del);
-
-            document.getElementById("taskList")
-                    .appendChild(li);
-
-            input.value = "";
-        }
+            item.append(text, completeButton, deleteButton);
+            taskList.appendChild(item);
+            taskInput.value = "";
+            taskInput.focus();
+        });
     </script>
 
 </body>

@@ -1,7 +1,10 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Somya Sharma's personal profile, skills, projects, and GitHub publishing notes.">
     <title>Somya Sharma | Portfolio</title>
     <style>
         body {
@@ -21,8 +24,19 @@
             background: white;
             margin: 20px auto;
             padding: 20px;
-            width: 80%;
+            width: min(80%, 800px);
             border-radius: 10px;
+        }
+
+        a:focus-visible {
+            outline: 3px solid #e69a28;
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 600px) {
+            section {
+                width: calc(100% - 24px);
+            }
         }
 
         h2 {
@@ -38,12 +52,13 @@
 </head>
 <body>
 
-    <header>
+    <header id="top">
         <h1>Somya Sharma</h1>
         <p>B.Tech CSE (Data Science)</p>
         <p>JSS University, Noida</p>
     </header>
 
+    <main>
     <section>
         <h2>About Me</h2>
         <p>
@@ -67,9 +82,10 @@
 
     <section>
         <h2>Contact Me</h2>
-        <p>Email: somya@example.com</p>
-        <p>GitHub: somyasharma72</p>
+        <p>GitHub: <a href="https://github.com/somyasharma72">somyasharma72</a></p>
     </section>
+
+    </main>
 
     <footer>
         <p>© 2026 Somya Sharma</p>

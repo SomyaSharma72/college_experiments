@@ -1,27 +1,36 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial;
+            font-family: Arial, sans-serif;
             text-align: center;
             background: #eaf4ff;
             padding: 40px;
+            margin: 0;
         }
 
         .container {
             background: white;
             padding: 25px;
-            width: 300px;
+            width: min(100%, 420px);
             margin: auto;
             border-radius: 10px;
         }
 
-        input, button {
+        input,
+        button {
             padding: 10px;
             margin: 5px;
+            font: inherit;
         }
 
         button {
@@ -30,68 +39,94 @@
             border: none;
             cursor: pointer;
         }
+
+        button:focus-visible,
+        input:focus-visible {
+            outline: 3px solid #e69a28;
+            outline-offset: 2px;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+
+        @media (max-width: 420px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            input {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h2>Weather App</h2>
-
-        <input type="text" id="city"
-               placeholder="Enter city name">
-        <button onclick="getWeather()">Search</button>
-
-        <div id="result"></div>
-    </div>
+    <main class="container">
+        <h1>Weather App</h1>
+        <form id="searchForm">
+            <label for="city">City name</label>
+            <input type="search" id="city" placeholder="Enter city name" required>
+            <button type="submit">Search</button>
+        </form>
+        <div id="result" role="status" aria-live="polite"></div>
+    </main>
 
     <script>
-        async function getWeather() {
-            let city = document.getElementById("city").value.trim();
-            let result = document.getElementById("result");
+        const searchForm = document.getElementById("searchForm");
+        const cityInput = document.getElementById("city");
+        const result = document.getElementById("result");
 
-            if (city === "") {
-                result.innerHTML = "Please enter a city";
+        searchForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+            const city = cityInput.value.trim();
+            if (!city) {
+                result.textContent = "Please enter a city.";
+                cityInput.focus();
                 return;
             }
 
-            result.innerHTML = "Loading...";
-
+            result.textContent = "Loading weather...";
             try {
-                // Get city coordinates
-                let geoResponse = await fetch(
+                const geoResponse = await fetch(
                     `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`
                 );
+                if (!geoResponse.ok) {
+                    throw new Error("Could not search for that city.");
+                }
 
-                let geoData = await geoResponse.json();
-
-                if (!geoData.results) {
-                    result.innerHTML = "City not found";
+                const geoData = await geoResponse.json();
+                if (!geoData.results || geoData.results.length === 0) {
+                    result.textContent = "City not found. Check the spelling and try again.";
                     return;
                 }
 
-                let place = geoData.results[0];
-                let lat = place.latitude;
-                let lon = place.longitude;
-
-                // Get current weather
-                let weatherResponse = await fetch(
-                    `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,wind_speed_10m`
+                const place = geoData.results[0];
+                const weatherResponse = await fetch(
+                    `https://api.open-meteo.com/v1/forecast?latitude=${place.latitude}&longitude=${place.longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m`
                 );
+                if (!weatherResponse.ok) {
+                    throw new Error("Could not load the weather for that city.");
+                }
 
-                let weatherData = await weatherResponse.json();
-                let current = weatherData.current;
+                const weatherData = await weatherResponse.json();
+                if (!weatherData.current) {
+                    throw new Error("Weather data is unavailable for that city.");
+                }
 
-                result.innerHTML = `
-                    <h3>${place.name}</h3>
-                    <p>Temperature: ${current.temperature_2m} °C</p>
-                    <p>Humidity: ${current.relative_humidity_2m}%</p>
-                    <p>Wind Speed: ${current.wind_speed_10m} km/h</p>
-                `;
-
+                const current = weatherData.current;
+                const heading = document.createElement("h2");
+                heading.textContent = place.name;
+                const details = document.createElement("p");
+                details.textContent = `Temperature: ${current.temperature_2m} °C | Humidity: ${current.relative_humidity_2m}% | Wind speed: ${current.wind_speed_10m} km/h`;
+                result.replaceChildren(heading, details);
             } catch (error) {
-                result.innerHTML = "Error fetching weather data";
+                result.textContent = error instanceof Error
+                    ? `${error.message} Please try again.`
+                    : "Unable to load weather data. Please try again.";
             }
-        }
+        });
     </script>
 
 </body>

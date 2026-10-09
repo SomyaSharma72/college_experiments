@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A collection of six Web Development Lab experiments by Somya Sharma.">
+    <title>Web Development Lab | Somya Sharma</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            color: #243047;
+            background: #f4f6fb;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 48px 20px;
+            color: white;
+            background: #263b61;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+        }
+
+        header p {
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        main {
+            width: min(100% - 32px, 1000px);
+            margin: 32px auto;
+        }
+
+        .experiments {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        .experiment-card {
+            padding: 20px;
+            border: 1px solid #dce2ee;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .experiment-card h2 {
+            margin: 0 0 8px;
+            font-size: 1.15rem;
+        }
+
+        .experiment-card p {
+            margin: 0 0 16px;
+        }
+
+        .experiment-card a {
+            color: #174ea6;
+            font-weight: bold;
+        }
+
+        a:focus-visible {
+            outline: 3px solid #e69a28;
+            outline-offset: 3px;
+        }
+
+        footer {
+            padding: 16px;
+            color: #526078;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Web Development Lab</h1>
+        <p>Hi, I'm Somya. This page brings together my six lab experiments, from a profile page to small interactive web apps.</p>
+    </header>
+
+    <main>
+        <section class="experiments" aria-label="Lab experiments">
+            <article class="experiment-card">
+                <h2>Experiment 1: Personal Profile</h2>
+                <p>A simple profile page and notes on the GitHub workflow for publishing the lab work.</p>
+                <a href="experiment1/index.html">Open Experiment 1</a>
+            </article>
+            <article class="experiment-card">
+                <h2>Experiment 2: Personal Portfolio</h2>
+                <p>A portfolio with About, Projects, and Contact sections, plus a simple navigation menu.</p>
+                <a href="portfolio/index.html">Open Experiment 2</a>
+            </article>
+            <article class="experiment-card">
+                <h2>Experiment 3: To-Do List</h2>
+                <p>Add tasks, mark them complete, and remove them from the list.</p>
+                <a href="to-do%20list/index.html">Open Experiment 3</a>
+            </article>
+            <article class="experiment-card">
+                <h2>Experiment 4: SEO and Accessibility</h2>
+                <p>A student portfolio page improved with semantic structure, metadata, and keyboard-friendly styles.</p>
+                <a href="seo%20experiment/index.html">Open Experiment 4</a>
+            </article>
+            <article class="experiment-card">
+                <h2>Experiment 5: Weather App</h2>
+                <p>Search for a city and view its current weather from the Open-Meteo API.</p>
+                <a href="weather/index.html">Open Experiment 5</a>
+            </article>
+            <article class="experiment-card">
+                <h2>Experiment 6: Bootstrap Blog</h2>
+                <p>A responsive blog layout with a navigation bar, posts, sidebar, and footer.</p>
+                <a href="bootstrap_exp6/index.html">Open Experiment 6</a>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>Web Development Lab experiments</p>
+    </footer>
+</body>
+</html>
