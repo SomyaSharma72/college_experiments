@@ -1,11 +1,11 @@
-# Experiment 6: Bootstrap Blog
+# Experiment 6: Form & Field
 
-A responsive blog page with a navigation bar, two sample posts, an About and Categories sidebar, and a footer.
+A basic Bootstrap page about men's watches and jewellery. It has a navigation bar, a three-image carousel, three product cards, and a footer.
 
 ## Files
 
-- `index.html` — blog structure, Bootstrap layout, and custom styles.
+- `index.html` — page content and Bootstrap components.
+- `style.css` — small set of custom image styles.
+- `images/` — photos used by the page.
 
-## Run locally
-
-Open `index.html` in a web browser. An internet connection is needed to load Bootstrap 5.3.3 from jsDelivr and use the collapsible mobile navigation.
+Open `index.html` in a browser. Bootstrap is loaded from jsDelivr, and the photos are stored locally in `images/`.
