@@ -36,7 +36,13 @@
                 }
 
                 const parsedNotes = JSON.parse(savedNotes);
-                if (!Array.isArray(parsedNotes)) {
+                if (!Array.isArray(parsedNotes) || parsedNotes.some((note) => (
+                    !note
+                    || typeof note.id !== "string"
+                    || typeof note.title !== "string"
+                    || typeof note.content !== "string"
+                    || typeof note.updatedAt !== "string"
+                ))) {
                     throw new Error("Saved notes have an invalid format.");
                 }
 

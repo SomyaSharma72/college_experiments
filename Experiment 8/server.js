@@ -18,10 +18,10 @@ function validateBook(body) {
     }
     const title = typeof body.title === "string" ? body.title.trim() : "";
     const author = typeof body.author === "string" ? body.author.trim() : "";
-    const year = body.year === "" || body.year === undefined ? null : Number(body.year);
+    const year = body.year === "" || body.year === undefined || body.year === null ? null : Number(body.year);
 
-    if (!title || !author) {
-        return { error: "Title and author are required." };
+    if (!title || !author || title.length > 120 || author.length > 100) {
+        return { error: "Title and author are required (title: up to 120 characters; author: up to 100)." };
     }
     if (year !== null && (!Number.isInteger(year) || year < 1 || year > new Date().getFullYear())) {
         return { error: "Year must be a valid four-digit year." };

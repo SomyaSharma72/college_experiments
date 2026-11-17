@@ -17,14 +17,14 @@
         </article>
         <article>
             <span>02 · Dynamic</span><h2>Daily hello</h2>
-            <p>An Express page with a server-generated time and health endpoint, ready for AWS Elastic Beanstalk.</p>
-            <a href="dynamic-site/">Open dynamic site</a>
+            <p>An Express page with a server-generated time and health endpoint. Start it locally with <code>npm start</code> from its folder.</p>
+            <a href="http://localhost:3010/">Open dynamic site on localhost:3010</a>
         </article>
         <section class="guide">
             <h2>Deployment checklist</h2>
             <ol>
                 <li><strong>Netlify:</strong> deploy <code>static-site</code> as the site/publish directory in Netlify. No build command is required.</li>
-                <li><strong>AWS Elastic Beanstalk:</strong> in <code>dynamic-site</code>, run <code>npm install</code>, then create a Node.js environment and upload the folder contents as the application bundle. Set <code>NODE_ENV=production</code> in the environment.</li>
+                <li><strong>AWS Elastic Beanstalk:</strong> in <code>dynamic-site</code>, run <code>npm install</code>, then create a Node.js environment and upload the folder contents as the application bundle.</li>
                 <li>Use each platform's dashboard to confirm the public URL and review deployment logs.</li>
             </ol>
         </section>

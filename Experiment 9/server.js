@@ -64,7 +64,7 @@ async function requireAuth(request, response, next) {
         return response.status(401).json({ error: "Please sign in first." });
     }
     try {
-        const claims = jwt.verify(token, secret);
+        const claims = jwt.verify(token, secret, { algorithms: ["HS256"] });
         if (typeof claims !== "object" || !claims.sub || !claims.jti) {
             return response.status(401).json({ error: "Your session is invalid. Please sign in again." });
         }
@@ -86,7 +86,10 @@ async function createSession(user, response) {
     const tokenId = crypto.randomUUID();
     const expiresAt = new Date(Date.now() + tokenLifetimeSeconds * 1000);
     await Session.create({ tokenId, userId: user._id, expiresAt });
-    const token = jwt.sign({ sub: user.id, jti: tokenId }, secret, { expiresIn: tokenLifetimeSeconds });
+    const token = jwt.sign({ sub: user.id, jti: tokenId }, secret, {
+        algorithm: "HS256",
+        expiresIn: tokenLifetimeSeconds
+    });
     setSessionCookie(response, token);
 }
 
@@ -151,7 +154,7 @@ app.post("/api/auth/logout", async (request, response, next) => {
         return response.status(204).end();
     }
     try {
-        const claims = jwt.verify(token, secret);
+        const claims = jwt.verify(token, secret, { algorithms: ["HS256"] });
         if (typeof claims === "object" && claims.jti) {
             await Session.deleteOne({ tokenId: claims.jti });
         }
