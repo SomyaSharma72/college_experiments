@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A performance-optimized sample site using cached assets, minified CSS and JavaScript, and lazy-loaded images.">
+    <title>Field Notes | Experiment 11</title>
+    <link rel="stylesheet" href="style.min.css">
+    <script src="app.min.js" defer></script>
+</head>
+<body>
+    <header>
+        <a class="brand" href="#">FIELD NOTES</a>
+        <nav aria-label="Main navigation"><a href="#stories">Stories</a><a href="#about">About</a></nav>
+    </header>
+    <main>
+        <section class="hero">
+            <p class="eyebrow">Experiment 11 · Performance</p>
+            <h1>Small details.<br>Longer journeys.</h1>
+            <p>A lightweight sample page demonstrating practical front-end performance improvements.</p>
+            <a class="button" href="#stories">Browse stories</a>
+        </section>
+        <section id="stories" class="stories">
+            <div class="section-heading"><div><p class="eyebrow">The journal</p><h2>Notes from the trail</h2></div><span id="story-count"></span></div>
+            <div class="story-grid">
+                <article class="story-card">
+                    <img src="images/coast.svg" alt="Soft sunrise over a green coastal bluff" width="640" height="420" loading="lazy" decoding="async">
+                    <div><p class="eyebrow">Coast · 4 min read</p><h3>Where the land meets the morning</h3><p>Follow the quiet path as it bends toward the sea.</p></div>
+                </article>
+                <article class="story-card">
+                    <img src="images/forest.svg" alt="A sunlit path winding through a forest" width="640" height="420" loading="lazy" decoding="async">
+                    <div><p class="eyebrow">Forest · 6 min read</p><h3>A slower way through the woods</h3><p>Trade the shortcut for a little more time outside.</p></div>
+                </article>
+            </div>
+        </section>
+        <section id="about" class="about"><p class="eyebrow">Built for a faster web</p><p>This page loads compressed assets, gives browsers sensible cache instructions, and defers off-screen images until they are needed.</p></section>
+    </main>
+    <footer>Field Notes · Take the scenic route.</footer>
+</body>
+</html>
